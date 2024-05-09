@@ -1,33 +1,11 @@
-/** @jsxImportSource @emotion/react */
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { FC } from 'react';
+import {NavBar, LinkButton} from './Header.styled';
 
-const LinkButton = styled.button`
-  float: left;
-  display: block;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-  &:hover {
-    background-color: #ddd;
-    color: black;
-  }
-`;
+interface HeaderProps {}
 
-const NavBar = styled.button`
-  overflow: hidden;
-  background-color: #333;
-`;
-
-
-function Header(): any {
+const Header: FC<HeaderProps> = () => {
   return (
-    <NavBar
-    css={css`
-      overflow: hidden;
-      background-color: #333;
-    `}
-    >
+    <NavBar>
       <LinkButton>Contact List</LinkButton>
       <LinkButton>Edit Contact</LinkButton>
   </NavBar>

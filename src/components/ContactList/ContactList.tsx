@@ -1,80 +1,69 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { FC } from "react";
+import { ContactLists } from "./ContactList.styled";
+import AddContact from "../AddContact/AddContact";
+import ContactCard from "../ContactCard/ContactCard";
+// import axios from "axios";
+
+interface ContactListProps {}
+
+const roughData = [
+  {
+     name: "Ron",
+     phoneNumber: "05462131"
+  },
+  {
+     name: "Test",
+     phoneNumber: "05462131"
+  },
+  {
+     name: "Gobi",
+     phoneNumber: "05462131"
+  },
+  {
+     name: "Ramadhan",
+     phoneNumber: "05462131"
+  },
+  {
+     name: "Natanegara",
+     phoneNumber: "05462131"
+  },
+];
 
 
-const contactListStyle = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+// const apiRequest = async () => {
+//   try { 
+//     const resp = await axios.get(
+//       `https://pokeapi.co/api/v2/pokemon/0`
+//     );
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
 
-const contactCardStyle = css`
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-  min-width: 80%;
+const ContactList: FC<ContactListProps> = () => {
+  // const [test, setTest] = useState(0);
 
-  &:hover {
-    transform: scale(1.05);
-  }
+  // useEffect(() => {
+  //   // Update the document title using the browser API
+  //   document.getElementById("ContactCardsTitle")!.innerHTML = `You clicked ${test} times`;
+  // });
 
-  h2 {
-    margin-bottom: 5px;
-  }
+  // const addTest = () => {
+  //   setTest((prev) => prev+1);
+  //   console.log(test);
+  // };
 
-  p {
-    font-size: 14px;
-    color: #666;
-  }
-`;
-
-function ContactList() {
   return (
-    <div css={contactListStyle}>
-        <div css={contactCardStyle}>
-          <h2>Contact 1</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 2</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 1</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 2</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 1</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 2</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 1</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 2</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 1</h2>
-          <p>Test</p>
-        </div>
-        <div css={contactCardStyle}>
-          <h2>Contact 2</h2>
-          <p>Test</p>
-        </div>
-    </div>
+    <>
+      <ContactLists>
+            {roughData.map((value, index) => {              
+              return (
+                <ContactCard {...value}/>
+              )
+            })}
+      </ContactLists>
+      <AddContact/>
+    </>
   );
 }
 

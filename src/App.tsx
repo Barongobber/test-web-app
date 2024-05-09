@@ -1,15 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, 
+  Routes,
+  Route, 
+  Navigate
+} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header';
-import ContactList from './components/ContactList/ContactList';
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <ContactList />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to={"/homepage"} />} />
+          <Route path="/homepage" element={<HomePage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,14 +1,21 @@
 {
   "usesTypeScript": true,
-  "usesStyledComponents": false,
+  "usesStyledComponents": true,
   "testLibrary": "None",
   "component": {
     "default": {
       "path": "src/components",
-      "withStyle": false,
+      "withStyle": true,
       "withTest": false,
       "withStory": false,
       "withLazy": false
+    },
+    "page": {
+      "path": "src/pages",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": true,
+      "withTest": false
     }
   },
   "usesCssModule": false,
