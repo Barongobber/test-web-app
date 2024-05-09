@@ -8,7 +8,11 @@ export const ContactCards = styled.div`
   margin: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
-  min-width: 80%;
+  min-width: 20%;
+
+  @media screen and (min-width: 800px) {
+    width: 50%;
+}
 
   &:hover {
     transform: scale(1.05);

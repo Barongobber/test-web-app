@@ -1,68 +1,40 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { ContactLists } from "./ContactList.styled";
-import AddContact from "../AddContact/AddContact";
 import ContactCard from "../ContactCard/ContactCard";
-// import axios from "axios";
+import axios from "axios";
 
 interface ContactListProps {}
 
-const roughData = [
-  {
-     name: "Ron",
-     phoneNumber: "05462131"
-  },
-  {
-     name: "Test",
-     phoneNumber: "05462131"
-  },
-  {
-     name: "Gobi",
-     phoneNumber: "05462131"
-  },
-  {
-     name: "Ramadhan",
-     phoneNumber: "05462131"
-  },
-  {
-     name: "Natanegara",
-     phoneNumber: "05462131"
-  },
-];
-
-
-// const apiRequest = async () => {
-//   try { 
-//     const resp = await axios.get(
-//       `https://pokeapi.co/api/v2/pokemon/0`
-//     );
-//   } catch (e) {
-//     console.log(e)
-//   }
-// }
-
 const ContactList: FC<ContactListProps> = () => {
-  // const [test, setTest] = useState(0);
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   // Update the document title using the browser API
-  //   document.getElementById("ContactCardsTitle")!.innerHTML = `You clicked ${test} times`;
-  // });
+  useEffect(() => {
+    setLoading(true);
+    apirequest();
+    setLoading(false);
+  });
 
-  // const addTest = () => {
-  //   setTest((prev) => prev+1);
-  //   console.log(test);
-  // };
+  const apirequest = async () => {
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon`
+      );
+      setPokemons(response.data.results);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  return (
+  return ( loading ? null :
     <>
       <ContactLists>
-            {roughData.map((value, index) => {              
+            {pokemons.map((value, index) => {              
               return (
-                <ContactCard {...value}/>
+                <ContactCard value={value} index={index}/>
               )
             })}
-      </ContactLists>
-      <AddContact/>
+      </ContactLists>      
     </>
   );
 }
